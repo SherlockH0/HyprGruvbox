@@ -1,0 +1,26 @@
+* {
+  font-family:
+    Open Sans,
+    FantasqueSansM Nerd Font Propo;
+}
+window#waybar {
+  background-color: transparent;
+}
+
+#workspaces {
+}
+
+#workspaces button {
+  padding: 0 5px;
+  background-color: #282828;
+  transition: all 0.3s ease-out;
+  margin: 0.3rem 0.1rem;
+  color: #ddc7a1;
+  border-radius: 15px;
+}
+
+#workspaces button.active {
+  padding: 0 20px;
+  background-color: #89b482;
+  color: #1d2021;
+}
