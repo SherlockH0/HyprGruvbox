@@ -1,0 +1,21 @@
+#!/bin/sh
+temp=$(sensors | grep 'Package id 0:\|Tdie' | grep ':[ ]*+[0-9]*.[0-9]*°C' -o | grep '[0-9]*.[0-9]*°C' -o)
+temp=${temp::-4}
+
+icon=""
+state="normal"
+
+if [[ temp -gt 90 ]]; then
+    icon=""
+    state="critical"
+elif [[ temp -gt 80 ]]; then
+    icon=""
+    state="warning"
+elif [[ temp -gt 60 ]];then
+    icon=""
+    state="hot"
+elif [[ temp -gt 40 ]]; then
+    icon=""
+fi  
+
+echo "{\"text\":\"$icon $temp °C\", \"state\":\"$state\"}"

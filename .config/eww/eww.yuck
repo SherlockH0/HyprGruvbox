@@ -1,0 +1,83 @@
+(defwindow bar
+  :monitor 0
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "100%"
+                      :height "20px"
+                      :anchor "top center")
+  :exclusive true
+  :namespace "bar"
+  (bar))
+(defwidget bar []
+    (box :class "bar-widget" :orientation "h" :space-evenly true
+
+        (box :orientation "h" 
+             :space-evenly false
+             :halign "start"
+             :class "clock-widget"
+             (clock))
+
+        (box :orientation "h" 
+             :space-evenly false
+             :halign "center"
+             :class "workspaces-widget"
+             (workspaces))
+
+        (box :orientation "h" 
+             :space-evenly false 
+             :halign "end" 
+             :class "right-widget" 
+             :spacing 20
+             (network)
+             (ram)
+             (temp))
+
+    )
+    
+)
+
+(deflisten workspaces :initial "[]" "bash ~/.config/eww/scripts/get-workspaces")
+(deflisten current_workspace :initial "1" "bash ~/.config/eww/scripts/get-active-workspace")
+(defwidget workspaces []
+  (eventbox :onscroll "bash ~/.config/eww/scripts/change-active-workspace {} ${current_workspace}" 
+    (box :space-evenly true
+         :spacing 4
+      (for workspace in workspaces
+        (eventbox :onclick "hyprctl dispatch workspace ${workspace.id}"
+                  :cursor "pointer"
+                  :class "workspace-entry-container"
+          (box :class "workspace-entry ${workspace.windows > 0 ? "occupied" : "empty"} ${workspace.id == current_workspace ? "current" : ""}"
+            (label :text "${workspace.id}" )
+               )
+          )
+        )
+      )
+    )
+  )
+
+(defpoll time :interval "1s"
+  `date '+%A %D — %H:%M'`)
+
+(defwidget clock [] 
+  (label
+    :text time)
+  )
+
+
+(defwidget ram []
+  (label
+    :class "ram-widget"
+    :text " ${round(EWW_RAM['used_mem_perc'], 0)}%")
+  )
+(defpoll temp :interval "2s"
+  "./scripts/temperature")
+
+(defwidget temp []
+  (label
+    :class "temp-widget ${temp['state']}"
+    :text "${temp['text']}"
+  ))
+(defwidget network []
+  (label
+      :text "󰤢")
+  )

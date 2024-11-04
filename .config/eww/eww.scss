@@ -1,0 +1,86 @@
+$bg: #1d2021;
+$fg: #DDC7A1;
+$accent: #89B482;
+$border: rgba($color: $fg, $alpha: .1);
+
+$red: #EA6962;
+$orange: #E6894E;
+$yellow: #D8A657;
+
+* {
+  all: unset; // Unsets everything so you can style everything from scratch
+}
+
+.background {
+  font-size: 14px;
+  font-family: Open Sans, FantasqueSansM Nerd Font Propo;
+  transition: 200ms ease-out;
+}
+
+.bar-widget.bar {
+  padding: 4px 8px 0 8px;
+}
+
+@mixin widget {
+  color: $fg;
+  background-color: rgba($color: $bg, $alpha: 0.8);
+  border: solid 2px $border;
+  border-radius: 10px;
+}
+
+.clock-widget {
+  @include widget;
+  padding: 4px 16px;
+}
+
+.right-widget {
+  @include widget;
+  font-weight: 500;
+  padding: 4px 16px;
+}
+
+.temp-widget {
+  transition: color 3s ease-in-out;
+
+  &.critical {
+    color: $red;
+    font-weight: 800;
+  }
+
+  &.warning {
+    color: $orange;
+    font-weight: 700;
+  }
+
+  &.hot {
+    color: $yellow;
+    font-weight: 500;
+  }
+}
+
+.workspaces-widget {
+  @include widget;
+  padding: 0 16px;
+
+  .workspace-entry-container {
+
+    &:hover .workspace-entry {
+      background-color: rgba($color: $accent, $alpha: 0.1);
+    }
+
+    .workspace-entry {
+      padding: 3px 5px;
+      border-top: solid 2px transparent;
+      color: $fg;
+
+      &.empty {
+        color: rgba($color: $fg, $alpha: .4);
+      }
+
+      &.current {
+        border-top: solid 2px $accent;
+        font-weight: 800;
+      }
+    }
+  }
+}
