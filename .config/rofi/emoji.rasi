@@ -1,0 +1,35 @@
+@import "gruvbox-dark.rasi"
+
+window {
+    width: 600;
+    height: 400;
+}
+
+textbox {
+  vertical-align:   0.5;
+  horizontal-align: 0.5;
+}
+
+listview {
+  columns:       8;
+  lines:         6;
+  cycle:         true;
+  dynamic:       true;
+  layout:        vertical;
+  reverse:       false;
+  fixed-height:  true;
+ // fixed-columns: true;
+}
+
+element {
+  children: [element-text];
+}
+
+entry {
+    placeholder         : "Search for an emoji...";
+}
+element-text {
+    horizontal-align: 0.5;
+    vertical-align:   0.5;
+    font: "Noto Sans Emoji 24";
+}

@@ -1,0 +1,5 @@
+@import "gruvbox-dark.rasi"
+
+element {
+    children: [element-text];
+}
