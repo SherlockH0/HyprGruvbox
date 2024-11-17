@@ -18,4 +18,4 @@ elif [[ temp -gt 40 ]]; then
     icon=""
 fi  
 
-echo "{\"text\":\"$icon $temp °C\", \"state\":\"$state\"}"
+echo '{"icon": "'"$icon"'", "temp": "'"$temp"'", "state": "'"$state"'"}'

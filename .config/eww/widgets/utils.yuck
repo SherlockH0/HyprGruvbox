@@ -1,0 +1,16 @@
+(defwidget state_icon [condition text ?class]
+  (label :class "indicator-icon ${class}" 
+         :visible {condition} 
+         :valign "center" 
+         :halign "center"
+         :text {text}
+    )
+  )
+
+(defwidget tooltip_label [text]
+  (label :class "tooltip"
+         :text {text}
+         :valign "center"
+         :halign "center"
+    )
+  )

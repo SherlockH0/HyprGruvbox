@@ -1,0 +1,20 @@
+#!/bin/bash
+
+vol="$(eww get volume)"
+eww update show_volume_osd=true
+
+while true; do
+    sleep 1.5
+
+    new_vol="$(eww get volume)"
+
+    echo "$new_vol $vol"
+
+    if [[ "$vol" != "$new_vol" ]]; then
+        vol="$new_vol"
+    else
+        eww update show_volume_osd=false
+        exit
+    fi
+done
+

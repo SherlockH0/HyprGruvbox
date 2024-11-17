@@ -1,11 +1,5 @@
-$bg: #1d2021;
-$fg: #DDC7A1;
-$accent: #89B482;
-$border: rgba($color: $fg, $alpha: .1);
+@import 'css/gruvbox.scss';
 
-$red: #EA6962;
-$orange: #E6894E;
-$yellow: #D8A657;
 
 * {
   all: unset; // Unsets everything so you can style everything from scratch
@@ -13,7 +7,8 @@ $yellow: #D8A657;
 
 .background {
   font-size: 14px;
-  font-family: Open Sans, FantasqueSansM Nerd Font Propo;
+  font-family: Inter, FantasqueSansM Nerd Font Propo;
+  font-feature-settings: "tnum";
   transition: 200ms ease-out;
 }
 
@@ -23,7 +18,7 @@ $yellow: #D8A657;
 
 @mixin widget {
   color: $fg;
-  background-color: rgba($color: $bg, $alpha: 0.8);
+  background-color: rgba($color: $bg0, $alpha: 0.8);
   border: solid 2px $border;
   border-radius: 10px;
 }
@@ -39,22 +34,79 @@ $yellow: #D8A657;
   padding: 4px 16px;
 }
 
+.volume {
+  padding: 0 56px 0 0;
+
+  .volume-osd-icon {
+    @include widget;
+    padding: 2px;
+  }
+
+  .volume-osd {
+    &.muted .volume-progress trough {
+      background: rgba(mix($bg_dim, $aqua, 95%), 0.8)
+    }
+
+    .volume-progress {
+      trough {
+        background: rgba($bg_dim, 0.8);
+        border: solid 2px $border;
+        min-width: 8px;
+        border-radius: 5px;
+
+        progress {
+          background-color: $aqua;
+          border-radius: 3px;
+          min-width: 8px;
+        }
+      }
+    }
+  }
+}
+
+.tooltip {
+  background: $bg_dim;
+  border-radius: 6px;
+  border: solid 1px $border;
+  color: $fg;
+  padding: 5px 8px;
+}
+
+.network {
+  transition: color 1s ease-in-out;
+}
+
+.vpn-label {
+  color: $aqua;
+  font-size: 7px;
+  font-weight: 900;
+  margin-left: -18px;
+  margin-bottom: -2px;
+  background: $bg0;
+}
+
+.indicator-icon {
+  font-size: 16px;
+}
+
+.info_label {
+  font-size: 13px;
+}
+
 .temp-widget {
   transition: color 3s ease-in-out;
 
+
   &.critical {
     color: $red;
-    font-weight: 800;
   }
 
   &.warning {
     color: $orange;
-    font-weight: 700;
   }
 
   &.hot {
     color: $yellow;
-    font-weight: 500;
   }
 }
 
@@ -65,11 +117,11 @@ $yellow: #D8A657;
   .workspace-entry-container {
 
     &:hover .workspace-entry {
-      background-color: rgba($color: $accent, $alpha: 0.1);
+      background-color: rgba($color: $aqua, $alpha: 0.1);
     }
 
     .workspace-entry {
-      padding: 3px 5px;
+      padding: 3px 4px;
       border-top: solid 2px transparent;
       color: $fg;
 
@@ -78,7 +130,7 @@ $yellow: #D8A657;
       }
 
       &.current {
-        border-top: solid 2px $accent;
+        border-top: solid 2px $aqua;
         font-weight: 800;
       }
     }

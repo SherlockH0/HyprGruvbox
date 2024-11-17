@@ -1,0 +1,46 @@
+(deflisten volume :initial "100"
+  "scripts/volume"
+  )
+
+(defvar show_volume_osd true)
+
+(defwidget volume_icon []
+  (tooltip :halign "center"
+           :width 12
+    (tooltip_label :text {volume == "muted" ? "Muted" : "${volume}%"}
+      )
+    (state_icon :condition true 
+                :text {volume == "muted" ? "󰸈"
+                     : volume > 50 ? "󰕾" 
+                     : volume > 0  ? "󰖀"
+                     :               "󰕿"}
+      )
+    )
+  )
+
+(defwidget volume_osd []
+  (revealer :transition "slideleft"
+            :reveal {show_volume_osd}
+            :duration "300ms"
+
+    (box :orientation "vertical"
+         :space-evenly false
+         :halign "center"
+         :spacing 6
+      (box :class "volume-osd ${volume == "muted" ? "muted" : ""}"
+           :vexpand true
+           :halign "center"
+        (progress :value {volume == "muted" ? 0 : volume}
+                  :orientation "vertical"
+                  :class "volume-progress"
+                  :flipped true
+        )
+      )
+      (box :class "volume-osd-icon"
+           :width 26
+           :height 26
+        (volume_icon)
+      )
+    )
+  )
+)

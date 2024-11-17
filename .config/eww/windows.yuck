@@ -1,0 +1,19 @@
+(defwindow bar :monitor 0
+               :geometry (geometry :x "0%"
+                                   :y "0%"
+                                   :width "100%"
+                                   :height "20px"
+                                   :anchor "top center"
+                                   )
+               :exclusive true
+               :namespace "eww"
+  (bar)
+  )
+
+(defwindow volume :monitor 0
+                  :geometry (geometry :height "256px"
+                                      :anchor "center right")
+                  :stacking "overlay"
+                  :namespace "eww"
+  (volume_osd)
+  )

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+pkill -f toggle_volume_osd 
+~/.config/eww/scripts/toggle_volume_osd &
+
+
+case $1 in
+--up)
+    wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+  ;;
+--down)
+    wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+  ;;
+--toggle)
+    wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+  ;;
+esac

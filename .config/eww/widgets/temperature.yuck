@@ -1,0 +1,18 @@
+(defpoll temp_info :interval "2s" 
+                   :initial '{"icon": "","temp": "40", "state": "normal"}'
+  "./scripts/temperature"
+  )
+
+(defwidget temp []
+  (box :class "temp-widget ${temp_info['state']}"
+       :space-evenly false
+       :spacing 4
+    (state_icon :condition true
+                :text {temp_info['icon']}
+      )
+    (label :class "info_label"
+           :valign "end"
+           :text "${temp_info['temp']}°C"
+      )
+    )
+  )

@@ -1,0 +1,18 @@
+#!/bin/bash
+# ┳┓     ┓  ┓┏  ┓       
+# ┣┫┏┓┏┓┏┫  ┃┃┏┓┃┓┏┏┳┓┏┓
+# ┛┗┗ ┗┻┗┻  ┗┛┗┛┗┗┻┛┗┗┗ 
+#                       
+# Monitors volume level.
+# Most of the code copied from https://github.com/linkfrg/dotfiles/blob/eww/.config/eww/scripts/volume.sh
+# (Thank you, linkfrg!)
+
+get_volume ()
+{
+    pamixer --get-volume-human | tr -d '%'
+}
+
+get_volume
+pactl subscribe | rg --line-buffered "on sink" | while read -r _; do
+    get_volume
+done

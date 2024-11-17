@@ -1,0 +1,36 @@
+(defwidget bar []
+  (box :class "bar-widget" 
+       :orientation "h"
+       :space-evenly true
+    (box :orientation "h" 
+         :space-evenly false
+         :halign "start"
+         :class "clock-widget"
+      (clock)
+      )
+    (box :orientation "h" 
+         :space-evenly false
+         :halign "center"
+         :class "workspaces-widget"
+      (workspaces)
+      )
+    (box :orientation "h" 
+         :space-evenly false 
+         :halign "end" 
+         :class "right-widget" 
+         :spacing 24
+      (volume_icon)
+      (network_icon)
+      (temp)
+      )
+    )
+  )
+
+(defpoll time :interval "1s"
+  `date '+%A, %d.%m.%Y — %H:%M'`
+  )
+
+(defwidget clock [] 
+  (label :text time
+    )
+  )

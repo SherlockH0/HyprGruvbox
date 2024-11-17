@@ -1,0 +1,24 @@
+(deflisten network :initial '{"essid": "lo", "signal": "", "vpn": false}'
+  "scripts/network"
+  )
+
+(defwidget network_icon []
+  (tooltip
+    (tooltip_label :text {network.essid})
+    (box :space-evenly false
+         (state_icon :condition true
+                     :text {network.essid == "lo" ? "󰤭" 
+                     : network.signal == "" ? "󰤩" 
+                     : network.signal < 25 ? "󰤟" 
+                     : network.signal < 50 ? "󰤢" 
+                     : network.signal < 75 ? "󰤥" 
+                     :                       "󰤨"}
+                     )
+         (label :visible {network.vpn}
+                :text "VPN"
+                :class "vpn-label"
+                :valign "end"
+                )
+         )
+    )
+  )
