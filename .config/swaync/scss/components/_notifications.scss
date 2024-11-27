@@ -1,0 +1,200 @@
+@use "../abstracts" as *;
+
+.notification-row {
+  outline: none;
+
+  &:focus,
+  &:hover {
+    background: $noti-bg-focus;
+  }
+
+  .notification-background {
+    padding: 4px 12px;
+
+    .close-button {
+      /* The notification Close Button */
+      background: $noti-close-bg;
+      padding: 0;
+      border-radius: 100%;
+      $margin: 6px;
+      margin-top: $margin;
+      margin-right: $margin;
+      box-shadow: none;
+      border: none;
+      min-width: 24px;
+      min-height: 24px;
+
+      &:hover {
+        background: $noti-close-bg-hover;
+        transition: $hover-tranistion;
+      }
+    }
+
+    .notification {
+      /* The actual notification */
+      border-radius: $border-radius;
+      border: $border;
+      padding: 0;
+      transition: $hover-tranistion;
+      background: $noti-bg;
+
+      &.low {
+        /* Low Priority Notification */
+      }
+
+      &.normal {
+        /* Normal Priority Notification */
+      }
+
+      &.critical {
+        /* Critical Priority Notification */
+      }
+
+      %action {
+        padding: 4px;
+        box-shadow: none;
+        background: transparent;
+        border: none;
+        transition: $hover-tranistion;
+      }
+
+      %action-hover {
+        -gtk-icon-effect: none;
+        background: $noti-bg-hover;
+      }
+
+      .notification-default-action {
+        /* The large action that also displays the notification summary and body */
+        @extend %action;
+        border-radius: $border-radius - 1;
+
+        &:hover {
+          @extend %action-hover;
+        }
+
+        &:not(:only-child) {
+          /* When alternative actions are visible */
+          border-bottom-left-radius: 0px;
+          border-bottom-right-radius: 0px;
+        }
+
+        .notification-content {
+          background: transparent;
+          border-radius: $border-radius;
+          padding: 14px;
+
+          .image {
+            /* Notification Primary Image */
+            -gtk-icon-effect: none;
+            border-radius: 0px;
+            /* Size in px */
+            margin: 0px 16px 0px 0px;
+          }
+
+          .app-icon {
+            /* Notification app icon (only visible when the primary image is set) */
+            -gtk-icon-effect: none;
+            -gtk-icon-shadow: 0 1px 4px black;
+            margin: 6px;
+          }
+
+          .text-box {
+            .summary {
+              /* Notification summary/title */
+              font-weight: bold;
+              background: transparent;
+              text-shadow: none;
+            }
+
+            .time {
+              /* Notification time-ago */
+              font-size: 12px;
+              font-weight: 500;
+              background: transparent;
+              text-shadow: none;
+              margin-right: 30px;
+            }
+
+            .body {
+              /* Notification body */
+              font-weight: normal;
+              background: transparent;
+              text-shadow: none;
+            }
+          }
+
+          progressbar {
+            /* The optional notification progress bar */
+            margin-top: 5px;
+          }
+
+          .body-image {
+            /* The "extra" optional bottom notification image */
+            margin-top: 5px;
+            background-color: white;
+            border-radius: $border-radius;
+            -gtk-icon-effect: none;
+          }
+
+          .inline-reply {
+            /* The inline reply section */
+            margin-top: 5px;
+
+            .inline-reply-entry {
+              background: $noti-bg;
+              caret-color: $fg;
+              border: $border;
+              border-radius: $border-radius;
+            }
+
+            .inline-reply-button {
+              margin-left: 4px;
+              background: $noti-bg;
+              border: $border;
+              border-radius: $border-radius;
+              color: $fg;
+
+              &:disabled {
+                background: initial;
+                color: $text-disabled;
+                border: $border;
+                border-color: transparent;
+              }
+
+              &:hover {
+                background: $noti-bg-hover;
+              }
+            }
+          }
+        }
+      }
+
+      .notification-action {
+        /* The alternative actions below the default action */
+        @extend %action;
+
+        border-top: $border;
+        border-radius: 0px;
+        border-right: $border;
+
+        &:first-child {
+          /* add bottom border radius to eliminate clipping */
+          border-bottom-left-radius: $border-radius - 1;
+        }
+
+        &:last-child {
+          border-bottom-right-radius: $border-radius - 1;
+          border-right: none;
+        }
+
+        &:hover {
+          @extend %action-hover;
+        }
+      }
+
+      &>*:last-child>* {
+        min-height: 2.5rem;
+      }
+    }
+  }
+}

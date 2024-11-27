@@ -1,0 +1,42 @@
+@use "sass:color";
+
+$fg: #DDC7A1;
+$text: $fg;
+$text-disabled: #A89984;
+
+$bg: #141617;
+$bg-sec: #1d2021;
+
+$noti-bg: rgba($bg, .8);
+$noti-bg-focus: rgba(#282828, .2);
+$noti-bg-hover: rgba($bg-sec, .2);
+
+$noti-close-bg: rgba($fg, .1);
+$noti-close-bg-hover: rgba($fg, .15);
+
+$noti-bg-opaque: $bg;
+$noti-bg-hover-opaque: color.mix($bg, $bg-sec, 80%);
+
+$active: #89B482;
+
+$button: rgba($fg, .1);
+$hover: rgba($fg, .15);
+
+$urgent: #EA6962;
+
+$border-radius: 12px;
+$noti-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+
+$hover-tranistion: background 0.15s ease-in-out;
+$group-collapse-tranistion: opacity 400ms ease-in-out;
+
+$border: 1px solid rgba($fg, .05);
+
+* {
+  all: unset;
+  font-size: 14px;
+  font-family: "Inter";
+  transition: 200ms;
+
+  color: $fg;
+}

@@ -1,0 +1,83 @@
+@use "../abstracts" as *;
+@use "sass:color";
+
+/* Avoid 'annoying' backgroud */
+.blank-window {
+  background: transparent;
+}
+
+/* CONTROL CENTER ------------------------------------------------------------------------ */
+
+.control-center {
+  margin: 0px;
+  padding: 8px;
+}
+
+.control-center-list-placeholder {
+  padding: 12px 20px;
+  background: rgba($bg, 0.8);
+  border-radius: 15px;
+  border: $border;
+}
+
+.notification-group {
+  %header {
+    margin: 0 19px 8px 16px;
+  }
+
+  .notification-group-headers {
+    /* Notification Group Headers */
+    @extend %header;
+
+    .notification-group-icon {
+      color: $fg;
+      -gtk-icon-transform: scale(.5);
+    }
+
+    .notification-group-header {
+      color: $fg;
+      font-size: 1.2rem;
+    }
+  }
+
+  .notification-group-buttons {
+    /* Notification Group Buttons */
+    @extend %header;
+
+    &>* {
+      margin-left: 6px;
+      padding: 6px;
+      background: color.mix($bg, $fg, 90%);
+      border-radius: 100%;
+
+      &:hover {
+        background: color.mix($bg, $fg, 85%);
+      }
+
+      &:active {
+        background: $active;
+
+        & * {
+          color: $bg;
+        }
+      }
+    }
+  }
+
+  &.collapsed {
+    .notification-row {
+      .notification {
+        background-color: $noti-bg-opaque;
+      }
+
+    }
+
+    &:hover {
+      .notification-row:not(:only-child) {
+        .notification {
+          background-color: $noti-bg-hover-opaque;
+        }
+      }
+    }
+  }
+}

@@ -2,7 +2,7 @@
   "scripts/volume"
   )
 
-(defvar show_volume_osd true)
+(defvar show_volume_osd false)
 
 (defwidget volume_icon []
   (tooltip :halign "center"
@@ -20,7 +20,7 @@
 
 (defwidget volume_osd []
   (revealer :transition "slideleft"
-            :reveal {show_volume_osd}
+            :reveal show_volume_osd
             :duration "300ms"
 
     (box :orientation "vertical"

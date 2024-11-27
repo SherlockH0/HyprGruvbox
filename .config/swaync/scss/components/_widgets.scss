@@ -1,0 +1,81 @@
+@use "../abstracts" as *;
+/* WIDGETS --------------------------------------------------------------------------- */
+
+@mixin widget {
+  margin: 8px;
+  background: $bg-sec;
+  padding: 6px 12px 12px;
+  border: 2px solid rgba($fg, .1);
+}
+
+/* Notification clear button */
+.widget-title {
+  @include widget;
+  margin-bottom: 0;
+  border-radius: 10px 10px 0px 0px;
+  border-bottom: none;
+
+  &>*:first-child {
+    font-weight: 500;
+    font-size: 1.4rem;
+  }
+}
+
+.widget-title button {
+  background: $button;
+  border-radius: 10px;
+  padding: 6px 16px;
+
+  &:hover {
+    background-color: $hover;
+  }
+
+  &:active {
+    background-color: $active;
+
+    &>* {
+      color: $bg;
+    }
+  }
+}
+
+
+/* Do not disturb */
+.widget-dnd {
+  @include widget;
+  margin-top: 0;
+  margin-bottom: 16px;
+  border-radius: 0px 0px 10px 10px;
+  border-top: none;
+
+  &>*:first-child {
+    font-size: 0.8rem;
+  }
+
+  &>switch {
+    background: $button;
+    font-size: initial;
+    border-radius: 10px;
+    color: $fg;
+    box-shadow: none;
+    padding: 2px;
+    margin-right: 6px;
+
+    &:hover {
+      background: $hover;
+    }
+
+    &:checked {
+      background: $active;
+
+      & * {
+        color: $bg;
+      }
+    }
+
+    slider {
+      background: $bg;
+      border-radius: 8px;
+    }
+  }
+}

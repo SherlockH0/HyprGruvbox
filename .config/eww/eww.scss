@@ -1,6 +1,5 @@
 @import 'css/gruvbox.scss';
 
-
 * {
   all: unset; // Unsets everything so you can style everything from scratch
 }
@@ -18,7 +17,7 @@
 
 @mixin widget {
   color: $fg;
-  background-color: rgba($color: $bg0, $alpha: 0.8);
+  background-color: $bg0;
   border: solid 2px $border;
   border-radius: 10px;
 }
@@ -44,12 +43,12 @@
 
   .volume-osd {
     &.muted .volume-progress trough {
-      background: rgba(mix($bg_dim, $aqua, 95%), 0.8)
+      background: mix($bg_dim, $aqua, 95%)
     }
 
     .volume-progress {
       trough {
-        background: rgba($bg_dim, 0.8);
+        background: $bg_dim;
         border: solid 2px $border;
         min-width: 8px;
         border-radius: 5px;

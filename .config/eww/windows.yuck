@@ -8,7 +8,7 @@
                :exclusive true
                :namespace "eww"
   (bar)
-  )
+)
 
 (defwindow volume :monitor 0
                   :geometry (geometry :height "256px"
@@ -16,4 +16,5 @@
                   :stacking "overlay"
                   :namespace "eww"
   (volume_osd)
-  )
+)
+
