@@ -1,0 +1,12 @@
+(deflisten layout :initial 'en'
+  "scripts/get_kb_layout"
+)
+
+
+(defwidget keyboard []
+  (box :class "keyboard-widget"
+    (label :text layout
+           :valign "center"
+    )
+  )
+)

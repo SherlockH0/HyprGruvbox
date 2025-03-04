@@ -1,6 +1,7 @@
 (include "./widgets/utils.yuck")
 
 (include "./widgets/network.yuck")
+(include "./widgets/keyboard.yuck")
 (include "./widgets/temperature.yuck")
 (include "./widgets/volume.yuck")
 (include "./widgets/workspaces.yuck")

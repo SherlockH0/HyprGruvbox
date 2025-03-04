@@ -27,6 +27,11 @@
   padding: 4px 16px;
 }
 
+.keyboard-widget * {
+  font-family: FantasqueSansM Nerd Font Mono;
+  font-size: 15px;
+}
+
 .right-widget {
   @include widget;
   font-weight: 500;
@@ -38,6 +43,7 @@
 
   .volume-osd-icon {
     @include widget;
+    background: $bg_dim;
     padding: 2px;
   }
 
@@ -94,7 +100,6 @@
 
 .temp-widget {
   transition: color 3s ease-in-out;
-
 
   &.critical {
     color: $red;
